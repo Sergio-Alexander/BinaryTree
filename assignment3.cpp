@@ -55,6 +55,7 @@ int main() {
             t.postorderDisplay();
         } else if (menu_input == 11){
             // Check if a tree is balanced
+
         } else if (menu_input == 12){
             // Destroy tree
             t.destroyTree();
@@ -86,4 +87,4 @@ void menu(){
               << "0. Quit" << std::endl;
 }
 
-
+//wassup
