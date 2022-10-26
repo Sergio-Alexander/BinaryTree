@@ -87,4 +87,3 @@ void menu(){
               << "0. Quit" << std::endl;
 }
 
-//wassup
