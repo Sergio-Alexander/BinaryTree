@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "BST.h"
+#include <vector>
 
 BST::TreeNode* BST::insert(TreeNode* t, int x){
     if (t == nullptr){
@@ -127,7 +128,6 @@ void BST::destroyTree() {
     std::cout << "Tree has been destroyed";
 }
 
-
 int BST::checkIfBalanced(TreeNode * t){
     if (t == nullptr){
         return 1;
@@ -142,7 +142,6 @@ int BST::checkIfBalanced(TreeNode * t){
 
     return (leftIsBalanced == 1) && (rightIsBalanced == 1) && (std::abs(leftHeight - rightHeight) <= 1);
 }
-
 
 int BST::isTreeBalanced(){
     return checkIfBalanced(root);
@@ -166,23 +165,97 @@ void BST::deleteLeafNode(int num){
     root = deleteNode(root, num);
 }
 
-// int BST::findPredecessor(TreeNode * t, int num){
+void BST::whatever(TreeNode * t, std::vector<int> &arr){
+    if (t == nullptr){
+        return;
+    }
+    whatever(t -> left, arr);
+    arr.push_back(t -> val);
+    whatever(t -> right, arr);
+}
 
-//     if (t == nullptr){
-//         return 0;
-//     } else if (t -> right == nullptr){
-//         return t -> val;
-//     } else{
-//         return findPredecessor(t -> left);
-//     }
-// }
+ std::vector<int> BST::getArr(TreeNode * t, int num){
+    std::vector<int> arr;
 
-// void BST::getPredecessor(int num){
+    whatever(t, arr);
+    return arr;
+}
 
-//     if (num < root){
+int BST::getPredecessor(int num){
+    std::vector<int> arr = getArr(root, num);
+    for (int i = 0; i < arr.size(); i++){
+        if (num == arr[i]){
+            if (i == 0){
+                return -1;
+            }
+            return arr[i - 1];
+        }
+    }
+    return -1;
+}
 
-//     }
+int BST::getSuccessor(int num){
+    std::vector<int> arr = getArr(root, num);
+    for (int i = 0; i < arr.size(); i++){
+        if (num == arr[i]){
+            if (i == arr.size() - 1){
+                return -1;
+            }
+            return arr[i + 1];
+        }
+    }
+    return -1;
+}
 
-//    num = findPredecessor(root -> left);
-//    std::cout << num;
-// }
+int BST::getPredecessorV2(int num){
+    TreeNode * pred_node = nullptr;
+    TreeNode * curr_node = root;
+
+    while (curr_node -> val != num){
+        if (curr_node -> val < num){
+            pred_node = curr_node;
+            curr_node = curr_node -> right;
+        } else if (curr_node -> val > num){
+            curr_node = curr_node -> left;
+        } 
+    }
+
+    curr_node = curr_node -> left;
+
+    while (curr_node != nullptr){
+        pred_node = curr_node;
+        curr_node = curr_node -> right;
+    }
+
+    if (pred_node == nullptr){
+        return -1;
+    }
+    
+    return pred_node -> val;
+}
+
+int BST::getSuccessorV2(int num){
+    TreeNode * succ_node = nullptr;
+    TreeNode * curr_node = root;
+
+    while (curr_node -> val != num){
+        if (curr_node -> val < num){
+            curr_node = curr_node -> right;
+        } else if (curr_node -> val > num){
+            succ_node = curr_node;
+            curr_node = curr_node -> left;
+        } 
+    }
+    curr_node = curr_node -> right;
+
+    while (curr_node != nullptr){
+        succ_node = curr_node;
+        curr_node = curr_node -> left;
+    }
+
+    if (succ_node == nullptr){
+        return -1;
+    }
+
+    return succ_node -> val;
+}

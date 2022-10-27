@@ -1,3 +1,6 @@
+#include <iostream>
+#include <vector>
+
 
 class BST {
 private:
@@ -27,7 +30,6 @@ private:
 
     TreeNode* deleteNode(TreeNode * t, int num);
 
-    int findPredecessor(TreeNode * t, int num);
 
 public:
     // public function declarations here
@@ -49,5 +51,17 @@ public:
 
     void deleteLeafNode(int num);
 
-    void getPredecessor(int num);
+
+    std::vector<int> getArr(TreeNode * t, int num);
+
+    void whatever(TreeNode * t, std::vector<int> &arr);
+
+    int getPredecessor(int num);
+
+    int getSuccessor(int num);
+
+    int getPredecessorV2(int num);
+
+    int getSuccessorV2(int num);
+
 };

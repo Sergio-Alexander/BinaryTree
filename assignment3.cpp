@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BST.h"
+#include <vector>
 
 void menu();
 
@@ -9,6 +10,7 @@ int main() {
     int find_number;
     int delete_the_node;
     int predecessor_value;
+    int successor_value;
     //design a mechanism to test your implementation continuously until user’s input is 0
     menu();
     std::cout << "Enter option: ";
@@ -31,12 +33,18 @@ int main() {
                 std::cout << "Number " << find_number << " is in the Binary Tree" << std::endl;
             }
         } else if (menu_input == 3){
-            // Find the predecessor for an existing value
-            // std::cout << "Input value: ";
-            // std::cin >> predecessor_value;
-            // t.getPredecessor(predecessor_value);
+            //Find the predecessor for an existing value
+            std::cout << "Input value: ";
+            std::cin >> predecessor_value;
+            std::cout << t.getPredecessor(predecessor_value) << std::endl;
+            std::cout << t.getPredecessorV2(predecessor_value) << std::endl;
         } else if (menu_input == 4){
             // Find the successor for an existing value
+            std::cout << "Input value: ";
+            std::cin >> successor_value;
+            std::cout << t.getSuccessor(successor_value) << std::endl;
+            std::cout << t.getSuccessorV2(successor_value) << std::endl;
+
         } else if (menu_input == 5){
             // Find the height of the tree
             std::cout << "The height of the tree is: ";
