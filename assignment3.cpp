@@ -7,6 +7,7 @@ int main() {
     int menu_input;
     int node_value;
     int find_number;
+    int delete_the_node;
     //design a mechanism to test your implementation continuously until user’s input is 0
     menu();
     std::cout << "Enter option: ";
@@ -18,7 +19,6 @@ int main() {
             std::cout << "Insert Node: ";
             std::cin >> node_value;
             t.insertNode(node_value);
-
         }
         else if (menu_input == 2){
             // Search for a value
@@ -29,7 +29,6 @@ int main() {
             } else{
                 std::cout << "Number " << find_number << " is in the Binary Tree" << std::endl;
             }
-
         } else if (menu_input == 3){
             // Find the predecessor for an existing value
         } else if (menu_input == 4){
@@ -44,6 +43,10 @@ int main() {
             std::cout << t.getTotalNodes() << std::endl;
         } else if (menu_input == 7){
             // Delete a node
+            std::cout << "What number would you like to delete?: ";
+            std::cin >> delete_the_node;
+            t.deleteLeafNode(delete_the_node);
+            std::cout << "The number" << " " << delete_the_node << " " << "has been deleted" << std::endl;
         } else if (menu_input == 8){
             // Traverse inorder and display
             t.inorderDisplay();
@@ -55,7 +58,7 @@ int main() {
             t.postorderDisplay();
         } else if (menu_input == 11){
             // Check if a tree is balanced
-
+            std::cout << "Is Tree Balanced?: " << t.isTreeBalanced();
         } else if (menu_input == 12){
             // Destroy tree
             t.destroyTree();

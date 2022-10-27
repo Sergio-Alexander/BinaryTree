@@ -25,6 +25,9 @@ private:
 
     int checkIfBalanced(TreeNode * t);
 
+    // int findPredecessor(TreeNode * t, int num);
+
+    TreeNode* deleteNode(TreeNode * t, int num);
 
 public:
     // public function declarations here
@@ -43,5 +46,9 @@ public:
     void destroyTree();
 
     int isTreeBalanced();
+
+    // int getPredecessor(int num);
+
+    void deleteLeafNode(int num);
 
 };

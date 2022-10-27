@@ -3,9 +3,6 @@
 #include "BST.h"
 
 BST::TreeNode* BST::insert(TreeNode* t, int x){
-
-
-
     if (t == nullptr){
         t = new BST::TreeNode();
         t -> val = x;
@@ -149,5 +146,51 @@ int BST::checkIfBalanced(TreeNode * t){
 
 int BST::isTreeBalanced(){
     return checkIfBalanced(root);
+}
+
+// int BST::findPredecessor(TreeNode * t, int num){
+//     if (t == nullptr){
+//         return 0;
+//     }
+
+//     if (t -> val != num){
+//         return 0;
+//     }
+
+//     if (t -> val == num){
+//         if (t -> left != nullptr){
+//             TreeNode * temp = t -> left;
+//             while (t -> right != nullptr){
+//                 temp = temp -> right;
+//             }
+//             t = temp;
+//         }
+//     }
+//     return findPredecessor(temp -> val, num);
+
+//     return findPredecessor(t -> left , num);  
+// }
+
+// int BST::getPredecessor(int num){
+//     return findPredecessor(root, num);
+// }
+
+
+BST::TreeNode* BST::deleteNode(TreeNode * t, int num){
+    if (t == nullptr){
+        return nullptr;
+    }
+
+    t -> left = deleteNode(t -> left, num);
+    t -> right = deleteNode(t -> right, num);
+
+    if (t -> val == num && t -> left == NULL && t -> right == NULL) {
+        return nullptr;
+    }
+    return t;
+}
+
+void BST::deleteLeafNode(int num){
+    root = deleteNode(root, num);
 }
 
