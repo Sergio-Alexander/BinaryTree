@@ -45,7 +45,7 @@ public:
 
     int getTotalNodes();
 
-    void destroyTree();
+    TreeNode* destroyTree();
 
     int isTreeBalanced();
 

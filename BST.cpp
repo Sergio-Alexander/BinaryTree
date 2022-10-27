@@ -66,7 +66,7 @@ void BST::postorderDisplay(){
 
 int BST::findHeight(TreeNode* t) {
     if (t == nullptr){
-        return 0;
+        return -1;
     }
     int leftHeight = findHeight(t -> left);
     int rightHeight = findHeight(t -> right);
@@ -122,10 +122,10 @@ void BST::demolishTree(TreeNode * t) {
     t = nullptr;
 }
 
-void BST::destroyTree() {
+BST::TreeNode* BST::destroyTree() {
     demolishTree(root);
     root = nullptr;
-    std::cout << "Tree has been destroyed";
+    return nullptr;
 }
 
 int BST::checkIfBalanced(TreeNode * t){
@@ -139,8 +139,11 @@ int BST::checkIfBalanced(TreeNode * t){
     int leftHeight = findHeight(t -> left);
     int rightHeight = findHeight(t -> right);
 
-
-    return (leftIsBalanced == 1) && (rightIsBalanced == 1) && (std::abs(leftHeight - rightHeight) <= 1);
+    if ((leftIsBalanced == 1) && (rightIsBalanced == 1) && (std::abs(leftHeight - rightHeight) <= 1)){
+        return 1;
+    } else{
+        return -1;
+    }
 }
 
 int BST::isTreeBalanced(){
@@ -156,6 +159,7 @@ BST::TreeNode* BST::deleteNode(TreeNode * t, int num){
     t -> right = deleteNode(t -> right, num);
 
     if (t -> val == num && t -> left == NULL && t -> right == NULL) {
+        delete t;
         return nullptr;
     }
     return t;
@@ -230,7 +234,7 @@ int BST::getPredecessorV2(int num){
     if (pred_node == nullptr){
         return -1;
     }
-    
+
     return pred_node -> val;
 }
 

@@ -74,6 +74,7 @@ int main() {
         } else if (menu_input == 12){
             // Destroy tree
             t.destroyTree();
+            std::cout << "Tree has been destroyed";
         }
         std::cout << std::endl;
         menu();
