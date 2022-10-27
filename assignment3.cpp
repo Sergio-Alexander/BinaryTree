@@ -8,6 +8,7 @@ int main() {
     int node_value;
     int find_number;
     int delete_the_node;
+    int predecessor_value;
     //design a mechanism to test your implementation continuously until user’s input is 0
     menu();
     std::cout << "Enter option: ";
@@ -31,6 +32,9 @@ int main() {
             }
         } else if (menu_input == 3){
             // Find the predecessor for an existing value
+            // std::cout << "Input value: ";
+            // std::cin >> predecessor_value;
+            // t.getPredecessor(predecessor_value);
         } else if (menu_input == 4){
             // Find the successor for an existing value
         } else if (menu_input == 5){

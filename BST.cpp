@@ -148,34 +148,6 @@ int BST::isTreeBalanced(){
     return checkIfBalanced(root);
 }
 
-// int BST::findPredecessor(TreeNode * t, int num){
-//     if (t == nullptr){
-//         return 0;
-//     }
-
-//     if (t -> val != num){
-//         return 0;
-//     }
-
-//     if (t -> val == num){
-//         if (t -> left != nullptr){
-//             TreeNode * temp = t -> left;
-//             while (t -> right != nullptr){
-//                 temp = temp -> right;
-//             }
-//             t = temp;
-//         }
-//     }
-//     return findPredecessor(temp -> val, num);
-
-//     return findPredecessor(t -> left , num);  
-// }
-
-// int BST::getPredecessor(int num){
-//     return findPredecessor(root, num);
-// }
-
-
 BST::TreeNode* BST::deleteNode(TreeNode * t, int num){
     if (t == nullptr){
         return nullptr;
@@ -194,3 +166,23 @@ void BST::deleteLeafNode(int num){
     root = deleteNode(root, num);
 }
 
+// int BST::findPredecessor(TreeNode * t, int num){
+
+//     if (t == nullptr){
+//         return 0;
+//     } else if (t -> right == nullptr){
+//         return t -> val;
+//     } else{
+//         return findPredecessor(t -> left);
+//     }
+// }
+
+// void BST::getPredecessor(int num){
+
+//     if (num < root){
+
+//     }
+
+//    num = findPredecessor(root -> left);
+//    std::cout << num;
+// }
