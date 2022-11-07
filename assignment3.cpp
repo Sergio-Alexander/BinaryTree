@@ -71,6 +71,12 @@ int main() {
         } else if (menu_input == 11){
             // Check if a tree is balanced
             std::cout << "Is Tree Balanced?: " << t.isTreeBalanced();
+            std::cout << std::endl;
+            if (t.isTreeBalanced() == 1){
+                std::cout << "YES, Tree is Balanced";
+            } else{
+                std::cout << "NO, Tree is NOT Balanced";
+            }
         } else if (menu_input == 12){
             // Destroy tree
             t.destroyTree();
