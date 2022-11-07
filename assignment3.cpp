@@ -27,6 +27,8 @@ int main() {
             // Search for a value
             std::cout << "What value do you want to find?: ";
             std::cin >> find_number;
+            std::cout << "Is the value in the binary tree?" << " " << t.getValue(find_number);
+            std::cout << std::endl;
             if(t.getValue(find_number) == -1){
                 std::cout << "Number " << find_number << " is not in the Binary Tree" << std::endl;
             } else{
